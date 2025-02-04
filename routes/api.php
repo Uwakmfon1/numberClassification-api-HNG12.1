@@ -15,4 +15,6 @@ Route::get('/get', function(){
 });
 
 Route::get('number/{temp}',[ClassificationController::class,'index']);
+
+Route::get('/func/{temp}',[ClassificationController::class,'funFact']);
 //
