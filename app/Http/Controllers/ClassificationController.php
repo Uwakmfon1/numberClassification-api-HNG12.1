@@ -20,9 +20,9 @@ class ClassificationController extends Controller
         }
 
         $properties = [];
-        $isPrime = $this->isPrime($number);
+
         $isOdd = $this->isOdd($number);
-        $isPerfect = $this->perfect($number);
+
         $isArmstrong =$this->isArmstrong($number);
         $properties[] = $isArmstrong ? 'armstrong':'not armstrong';
         $properties[] = $isOdd ? "odd":"even";
@@ -38,11 +38,12 @@ class ClassificationController extends Controller
 
         return response()->json( [
             'number' => (int)$number,
-            'is_prime'=>$isPrime,
-            'is_perfect'=>$isPerfect,
-            'is_odd'=>$isOdd,
-            'fun_fact'=>$fun_fact,
+            'is_prime'=> $this->isPrime($number),
+            'is_perfect'=>$this->isPerfect($number),
+            'is_odd'=>$this->isOdd($number),
             'properties'=>$properties,
+            'digit_sum'=>$this->digitSumArray($number),
+            'fun_fact'=>$fun_fact,
         ],200);
 
      }
@@ -59,7 +60,7 @@ class ClassificationController extends Controller
         return true;
      }
 
-     public function perfect($num)
+     public function isPerfect($num)
      {
         if ($num < 2) return false;
         $sum = 1;
@@ -90,5 +91,9 @@ class ClassificationController extends Controller
         if ($number == $sum) return true;
 
         return false;
+    }
+
+    public function digitSumArray($number) {
+        return array_sum(str_split($number));
     }
 }
