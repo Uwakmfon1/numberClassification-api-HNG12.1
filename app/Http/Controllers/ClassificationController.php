@@ -28,10 +28,9 @@ class ClassificationController extends Controller
         $properties[] = $isOdd ? "odd":"even";
 
 
-        $fun_fact = Cache::remember("fun_fact_{$number}", 3600, function () use ($number) {
-            return Http::get("http://numbersapi.com/{$number}")->body();
-        });
 
+
+        $fun_fact = Http::get("http://numbersapi.com/{$number}")->body();
 
 
 
