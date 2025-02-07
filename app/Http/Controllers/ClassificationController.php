@@ -14,8 +14,15 @@ class ClassificationController extends Controller
      public function index($number)
      {
 
+        if(!is_numeric($number) || preg_match('/^[a-zA-Z\W]+$/', $number)){
+            return response()->json([
+                "number"=>"alphabet",
+                "error"=>true
+            ],400);
+        }
+
         $properties = [];
-        $isPrime = $this->prime($number);
+        $isPrime = $this->isPrime($number);
         $isOdd = $this->isOdd($number);
         $isPerfect = $this->perfect($number);
         $isArmstrong =$this->isArmstrong($number);
@@ -26,6 +33,8 @@ class ClassificationController extends Controller
         $fun_fact = Cache::remember("fun_fact_{$number}", 3600, function () use ($number) {
             return Http::get("http://numbersapi.com/{$number}")->body();
         });
+
+
 
 
 
@@ -42,7 +51,7 @@ class ClassificationController extends Controller
      }
 
 
-     public function prime($num){
+     public function isPrime($num){
         if ($num < 2) return false;
         if ($num == 2) return true;
         if ($num % 2 == 0) return false;
@@ -67,24 +76,6 @@ class ClassificationController extends Controller
      }
 
 
-    //  public function isPrime($num){
-    //     for($x=2; $x<$num; $x++){
-    //         if($num % $x == 0) return false;
-    //     }
-    //    return true;
-    //  }
-
-    //  public function isPerfect($num)
-    //  {
-    //     $sum = 0;
-    //     for($i=1;$i<$num;$i++)
-    //     {
-    //         if($num % $i == 0){
-    //             $sum +=$i;
-    //         }
-    //     }
-    //     return $sum == $num;
-    //  }
 
      public function isOdd($num){
        return $num % 2 != 0;
