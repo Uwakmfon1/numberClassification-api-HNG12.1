@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('CACHE_STORE', 'database'),
+    'default' => env('CACHE_STORE',  'redis'),
 
     /*
     |--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ return [
         'sqlite' => [
         'driver' => 'sqlite',
         'database' => env('CACHE_DB_PATH', database_path('database.sqlite')),
-        'prefix' => 'laravel_cache',  
+        'prefix' => 'laravel_cache',
     ],
 
     ],
