@@ -3,18 +3,21 @@
 namespace App\Http\Controllers;
 
 
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Cache;
 
 class ClassificationController extends Controller
 {
 
-     public function index($number)
+     public function index(Request $request)
      {
 
+        $number = $request->query('number');
+        
         if(!is_numeric($number) || preg_match('/^[a-zA-Z\W]+$/', $number)){
             return response()->json([
-                "number"=>"alphabet",
+                "number"=>$number,
                 "error"=>true
             ],400);
         }

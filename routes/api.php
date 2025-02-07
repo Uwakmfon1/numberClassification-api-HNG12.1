@@ -5,4 +5,4 @@ use Illuminate\Support\Facades\Route;
 
 
 
-Route::get('number/{temp}',[ClassificationController::class,'index']);
+Route::get('classify-number',[ClassificationController::class,'index']);
