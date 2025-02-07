@@ -10,11 +10,6 @@ Route::get('/user', function (Request $request) {
 
 
 
-Route::get('/get', function(){
-    return "you just got me";
-});
-
 Route::get('number/{temp}',[ClassificationController::class,'index']);
 
-Route::get('/func/{temp}',[ClassificationController::class,'funFact']);
 //
