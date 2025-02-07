@@ -14,7 +14,7 @@ class ClassificationController extends Controller
      {
 
         $number = $request->query('number');
-        
+
         if(!is_numeric($number) || preg_match('/^[a-zA-Z\W]+$/', $number)){
             return response()->json([
                 "number"=>$number,
@@ -33,9 +33,12 @@ class ClassificationController extends Controller
         $properties[] = $isOdd ? "odd":"even";
 
 
+    
+        $fun_fact = Cache::remember("fun_fact_{$number}", 3600, function () use ($number) {
+            return Http::get("http://numbersapi.com/{$number}")->body();
+        });
 
-
-        $fun_fact = Http::get("http://numbersapi.com/{$number}")->body();
+        // $fun_fact = Http::get("http://numbersapi.com/{$number}")->body();
 
 
 

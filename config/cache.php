@@ -38,6 +38,7 @@ return [
             'serialize' => false,
         ],
 
+
         'database' => [
             'driver' => 'database',
             'connection' => env('DB_CACHE_CONNECTION'),
@@ -89,6 +90,12 @@ return [
         'octane' => [
             'driver' => 'octane',
         ],
+
+        'sqlite' => [
+        'driver' => 'sqlite',
+        'database' => env('CACHE_DB_PATH', database_path('database.sqlite')),
+        'prefix' => 'laravel_cache',  
+    ],
 
     ],
 
