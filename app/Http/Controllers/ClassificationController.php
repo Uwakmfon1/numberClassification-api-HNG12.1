@@ -24,7 +24,9 @@ class ClassificationController extends Controller
         $isOdd = $this->isOdd($number);
 
         $isArmstrong =$this->isArmstrong($number);
-        $properties[] = $isArmstrong ? 'armstrong':'not armstrong';
+        if($isArmstrong ){
+            $properties[] = $isArmstrong ? 'armstrong':'not armstrong';
+        }
         $properties[] = $isOdd ? "odd":"even";
 
 
@@ -40,7 +42,6 @@ class ClassificationController extends Controller
             'number' => (int)$number,
             'is_prime'=> $this->isPrime($number),
             'is_perfect'=>$this->isPerfect($number),
-            'is_odd'=>$this->isOdd($number),
             'properties'=>$properties,
             'digit_sum'=>$this->digitSumArray($number),
             'fun_fact'=>$fun_fact,

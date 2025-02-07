@@ -1,5 +1,5 @@
 # Number Classification Api
-This API provides a system for classifying numbers and getting interesting mathemaical properties of the number 
+This API provides a system for classifying numbers and getting interesting mathematical properties of the number 
 ---
 
 ## Setup Instructions
@@ -57,12 +57,12 @@ This API provides a system for classifying numbers and getting interesting mathe
     "number": 23,
     "is_prime": true,
     "is_perfect": false,
-    "is_odd": true,
-    "fun_fact": "23 is the number of minutes that all flashbacks take place before the assassination attempt on the president in the film Vantage Point.",
-    "properties": [
-        "not armstrong",
+     "properties": [        
         "odd"
-    ]
+    ],
+    "digit_sum":5,
+    "fun_fact": "23 is the number of minutes that all flashbacks take place before the assassination attempt on the president in the film Vantage Point.",
+   
 }
   ```
 #### Request: GET http://localhost:8000/api/number/a
