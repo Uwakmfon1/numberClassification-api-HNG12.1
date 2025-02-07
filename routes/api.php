@@ -9,7 +9,6 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 
-
 Route::get('number/{temp}',[ClassificationController::class,'index']);
 
 //
